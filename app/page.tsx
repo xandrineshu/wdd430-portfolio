@@ -2,13 +2,13 @@ import ProjectList from '@/components/ProjectList';
 
 const projects = [
   {
-    title: '୧ ‧₊˚ 🍵 ⋅ CSE341 Books API',
+    title: '୧ ‧₊˚ 🍵 CSE341 Books API',
     description: 'A RESTful Node.js and Express API connected to MongoDB Atlas with secure routing and validation.',
     technologies: ['Node.js', 'Express', 'MongoDB', 'JavaScript'],
     link: 'https://github.com/xandrineshu/cse341-books'
   },
   {
-    title: '.🍀 ݁˖༘⋆ WDD430 Portfolio',
+    title: '୧ ‧₊˚ 🍀 WDD430 Portfolio',
     description: 'A modern full-stack portfolio application built with Next.js App Router, TypeScript, and Tailwind CSS.',
     technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
     link: 'https://github.com/xandrineshu/wdd430-portfolio'

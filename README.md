@@ -1,4 +1,4 @@
- ──── ──── ──── ──── ──── ──── ──── ──── ──── ୨ৎ ──── ──── ──── ──── ──── ──── ──── ──── ────  
+ ──── ──── ──── ──── ──── ──── ──── ──── ୨ৎ ──── ──── ──── ──── ──── ──── ──── ────  
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
@@ -39,5 +39,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 Chech out at https://wdd430-portfolio-dun.vercel.app
 
- ──── ──── ──── ──── ──── ──── ──── ──── ──── ──── ──── ──── ୨ৎ ──── ──── ──── ──── ──── ──── ──── ──── ──── ──── ──── ──── 
+ ──── ──── ──── ──── ──── ──── ──── ──── ୨ৎ ──── ──── ──── ──── ──── ──── ──── ────  
  

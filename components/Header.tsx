@@ -10,6 +10,7 @@ export default function Header() {
                 <ul className="flex gap-6 font-medium">
                     <li><Link href="/" className="text-white hover:text-black transition-colors">Home</Link></li>
                     <li><Link href="/about" className="text-white hover:text-black transition-colors">About</Link></li>
+                    <li><Link href="/projects" className="text-white hover:text-black transition-colors">Projects</Link></li>
                 </ul>
             </nav>
         </header>

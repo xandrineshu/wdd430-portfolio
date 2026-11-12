@@ -13,8 +13,8 @@ export interface Project {
 export async function getProjects(type?: string | null): Promise<Project[]> {
     if (type) {
         const { rows } = await sql<Project>`
-      SELECT * FROM projects WHERE type = ${type} ORDER BY id
-    `;
+            SELECT * FROM projects WHERE type = ${type} ORDER BY id
+        `;
         return rows;
     }
     const { rows } = await sql<Project>`SELECT * FROM projects ORDER BY id`;
@@ -23,7 +23,7 @@ export async function getProjects(type?: string | null): Promise<Project[]> {
 
 export async function getProjectById(id: number): Promise<Project | null> {
     const { rows } = await sql<Project>`
-    SELECT * FROM projects WHERE id = ${id}
-  `;
+        SELECT * FROM projects WHERE id = ${id}
+    `;
     return rows[0] ?? null;
 }

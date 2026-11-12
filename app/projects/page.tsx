@@ -1,14 +1,17 @@
+// app/projects/page.tsx
 import Link from 'next/link';
 import { Suspense } from 'react';
 import ProjectCard from '@/components/ProjectCard';
-import { getProjects } from '@/lib/projects-db';
+import ProjectSearch from '@/components/ProjectSearch';
+import Pagination from '@/components/Pagination';
+import { fetchFilteredProjects, fetchProjectsPages } from '@/lib/projects-db';
 import type { Project } from '@/lib/projects-db';
 
-async function ProjectList({ type }: { type?: string }) {
-    const projects: Project[] = await getProjects(type);
+async function ProjectList({ query, currentPage, type }: { query: string; currentPage: number; type?: string }) {
+    const projects: Project[] = await fetchFilteredProjects(query, currentPage, type);
 
     if (projects.length === 0) {
-        return <p className="text-gray-500 text-center py-8">No projects found.</p>;
+        return <p className="text-gray-500 text-center py-8">No projects found matching your search.</p>;
     }
 
     return (
@@ -28,7 +31,7 @@ async function ProjectList({ type }: { type?: string }) {
 
 function ProjectsHeader({ currentType }: { currentType?: string }) {
     return (
-        <div className="mt-4 mb-8 pb-6 border-b border-pink-200">
+        <div className="mt-4 mb-6 pb-6 border-b border-pink-200">
             <h1 className="text-3xl font-bold text-gray-800 mb-2">
                 ⋆.❀° Projects Directory
             </h1>
@@ -36,7 +39,7 @@ function ProjectsHeader({ currentType }: { currentType?: string }) {
                 Explore my school projects and open-source contributions.
             </p>
 
-            {/* Filter Navigation Box with exact pink palette */}
+            {/* Filter Navigation Tabs */}
             <div className="inline-flex gap-1 bg-[#FFF0F3] p-1.5 rounded-xl border border-[#FFB6C1]/60 shadow-sm">
                 <Link
                     href="/projects"
@@ -70,18 +73,24 @@ function ProjectsHeader({ currentType }: { currentType?: string }) {
     );
 }
 
-// Inner async component to safely unwrap searchParams
+// Inner async component handling searchParams promise & data queries
 async function FilteredProjects({
     searchParams,
 }: {
-    searchParams: Promise<{ type?: string }>;
+    searchParams: Promise<{ query?: string; page?: string; type?: string }>;
 }) {
-    const resolvedSearchParams = await searchParams;
-    const filterType = resolvedSearchParams.type;
+    const resolvedParams = await searchParams;
+    const query = resolvedParams.query || '';
+    const currentPage = Number(resolvedParams.page) || 1;
+    const filterType = resolvedParams.type;
+
+    const totalPages = await fetchProjectsPages(query, filterType);
 
     return (
         <>
             <ProjectsHeader currentType={filterType} />
+            <ProjectSearch />
+
             <Suspense
                 fallback={
                     <div className="grid gap-6 animate-pulse">
@@ -90,23 +99,26 @@ async function FilteredProjects({
                     </div>
                 }
             >
-                <ProjectList type={filterType} />
+                <ProjectList query={query} currentPage={currentPage} type={filterType} />
             </Suspense>
+
+            <Pagination totalPages={totalPages} />
         </>
     );
 }
 
-// The default export MUST be a synchronous React Component
+// Main synchronous page component wrapper
 export default function ProjectsPage({
     searchParams,
 }: {
-    searchParams: Promise<{ type?: string }>;
+    searchParams: Promise<{ query?: string; page?: string; type?: string }>;
 }) {
     return (
         <main className="max-w-4xl mx-auto px-4 py-8">
             <Suspense fallback={
                 <div className="animate-pulse space-y-6">
                     <div className="h-24 bg-pink-100 rounded-xl" />
+                    <div className="h-12 bg-pink-50 rounded-xl" />
                     <div className="h-40 bg-pink-50 rounded-2xl" />
                 </div>
             }>

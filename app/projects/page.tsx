@@ -40,7 +40,7 @@ async function ProjectsContent({
                 <h1 className="text-3xl font-bold text-gray-800 mb-2">
                     ⋆.❀° Projects Directory
                 </h1>
-                <p className="text-gray-600 text-base mb-6 leading-relaxed">
+                <p className="text-gray-600 text-lg mb-6 leading-relaxed">
                     Explore my school projects and open-source contributions.
                 </p>
 
@@ -49,8 +49,8 @@ async function ProjectsContent({
                     <Link
                         href="/projects"
                         className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${!filterType
-                                ? 'bg-[#FFB6C1] text-gray-900 shadow-sm font-semibold'
-                                : 'text-gray-600 hover:text-gray-900 hover:bg-[#FFB6C1]/20'
+                            ? 'bg-[#FFB6C1] text-gray-900 shadow-sm font-semibold'
+                            : 'text-gray-600 hover:text-gray-900 hover:bg-[#FFB6C1]/20'
                             }`}
                     >
                         All
@@ -58,8 +58,8 @@ async function ProjectsContent({
                     <Link
                         href="/projects?type=school"
                         className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${filterType === 'school'
-                                ? 'bg-[#FFB6C1] text-gray-900 shadow-sm font-semibold'
-                                : 'text-gray-600 hover:text-gray-900 hover:bg-[#FFB6C1]/20'
+                            ? 'bg-[#FFB6C1] text-gray-900 shadow-sm font-semibold'
+                            : 'text-gray-600 hover:text-gray-900 hover:bg-[#FFB6C1]/20'
                             }`}
                     >
                         School
@@ -67,8 +67,8 @@ async function ProjectsContent({
                     <Link
                         href="/projects?type=opensource"
                         className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${filterType === 'opensource'
-                                ? 'bg-[#FFB6C1] text-gray-900 shadow-sm font-semibold'
-                                : 'text-gray-600 hover:text-gray-900 hover:bg-[#FFB6C1]/20'
+                            ? 'bg-[#FFB6C1] text-gray-900 shadow-sm font-semibold'
+                            : 'text-gray-600 hover:text-gray-900 hover:bg-[#FFB6C1]/20'
                             }`}
                     >
                         Open Source
